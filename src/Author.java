@@ -2,8 +2,8 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Author {
-    private String name;
-    private ArrayList<Title> titles = new ArrayList<>();
+    private final String name;
+    private final ArrayList<Title> titles = new ArrayList<>();
 
     public Author (String name){
         this.name = name;
