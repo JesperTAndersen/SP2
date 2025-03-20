@@ -1,7 +1,7 @@
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Author {
-
     private String name;
     private ArrayList<Title> titles = new ArrayList<>();
 
@@ -18,9 +18,12 @@ public class Author {
         for (Title t : titles){
             if ( t instanceof AudioBook ab) {
                 totalPay += ab.calculateRoyalty();
-
             } else if ( t instanceof PrintedBook pb){
                 totalPay += pb.calculateRoyalty();
+            } else if ( t instanceof EAudioBook eab) {
+                totalPay += eab.calculateRoyalty();
+            } else if ( t instanceof EBook eb){
+                totalPay += eb.calculateRoyalty();
             }
         }
         return totalPay;
@@ -32,7 +35,7 @@ public class Author {
 
     @Override
     public String toString(){
-        return name + ": " + calculateTotalPay() + "kr";
-
+        DecimalFormat df = new DecimalFormat("#.##"); // Returns calculateTotalPay with two decimals
+        return name + ": " + df.format(calculateTotalPay()) + " kr";
     }
 }

@@ -1,22 +1,17 @@
 public abstract class Title {
     private String title;
     protected String literatureType;
-    private int literatureTypePoints;
-    protected int copies;
-    protected double rate;
+    private final double pointRate = 0.067574; // Rate as of 2025
 
-    public Title(String title, String literatureType, int copies){
+    public Title(String title, String literatureType){
         this.title = title;
         this.literatureType = literatureType;
-        this.copies = copies;
     }
 
     protected abstract double calculatePoints();
 
     public double calculateRoyalty(){
-        double pointRate = 0.067574;
-        double value = calculatePoints() * pointRate;
-        return value;
+        return calculatePoints() * pointRate;
     }
 
     protected double convertLiteratureType(){
@@ -40,8 +35,5 @@ public abstract class Title {
         }
         return royaltyValue;
     }
-
-
-
 
 }
