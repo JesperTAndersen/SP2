@@ -1,7 +1,7 @@
 public abstract class NetBook extends Title{
-    private int availability;
-    private int reach;
-    private int use;
+    private final int availability;
+    private final int reach;
+    private final int use;
 
     public NetBook (String title, String literatureType, int availability, int reach, int use){
         super(title, literatureType);
