@@ -13,21 +13,13 @@ public class Author {
         this.titles.add(title);
     }
 
-    public float calculateTotalPay(){
-        float totalPay = 0;
-        for (Title t : titles){
-            if ( t instanceof AudioBook ab) {
-                totalPay += ab.calculateRoyalty();
-            } else if ( t instanceof PrintedBook pb){
-                totalPay += pb.calculateRoyalty();
-            } else if ( t instanceof EAudioBook eab) {
-                totalPay += eab.calculateRoyalty();
-            } else if ( t instanceof EBook eb){
-                totalPay += eb.calculateRoyalty();
-            }
-        }
-        return totalPay;
+public float calculateTotalPay() {
+    float totalPay = 0;
+    for (Title t : titles) {
+        totalPay += t.calculateRoyalty();
     }
+    return totalPay;
+}    
 
     public String getName() {
         return this.name;
