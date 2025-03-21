@@ -1,6 +1,7 @@
 public abstract class Title {
     private String title;
     protected String literatureType;
+    private static final double pointRate = 0.067574;
 
     public Title(String title, String literatureType){
         this.title = title;
@@ -11,29 +12,18 @@ public abstract class Title {
 
     public double calculateRoyalty(){
         // Rate as of 2025
-        double pointRate = 0.067574;
         return calculatePoints() * pointRate;
     }
 
     protected double convertLiteratureType(){
-        double royaltyValue = 0.0;
-        switch (this.literatureType) {
-            case "BI":
-                royaltyValue = 3.0;
-                break;
-            case "TE":
-                royaltyValue = 3.0;
-                break;
-            case "LYRIK":
-                royaltyValue = 6.0;
-                break;
-            case "SKØN":
-                royaltyValue = 1.7;
-                break;
-            case "FAG":
-                royaltyValue = 1.0;
-                break;
-        }
+        double royaltyValue = switch (this.literatureType) {
+            case "BI" -> 3.0;
+            case "TE" -> 3.0;
+            case "LYRIK" -> 6.0;
+            case "SKØN" -> 1.7;
+            case "FAG" -> 1.0;
+            default -> 0.0;
+        };
         return royaltyValue;
     }
 
