@@ -8,7 +8,6 @@ public class PrintedBook extends PhysicalBook {
 
     @Override
     protected double calculatePoints() {
-        double royaltyValue = convertLiteratureType();
-        return pages * royaltyValue * copies;
+        return pages * convertLiteratureType() * copies;
     }
 }
